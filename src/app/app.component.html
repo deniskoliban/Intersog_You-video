@@ -2,11 +2,11 @@
 <div class="container">
 
   <!-- <button (click)="loadClient()">authorize and load</button> -->
-<button (click)="execute()">execute</button>
-<div>
+<button (click)="execute()" >execute</button>
+<div  >
     <ul>
         <li>Table is here</li>
-        <li *ngFor="let item of globalResponse">
+        <li *ngFor="let item of items">
          <div>{{item.snippet.title}}</div><div>{{item.snippet.publishedAt | date: 'dd/MM/yyyy h:mm:ss' }}</div></li>
         
       </ul>

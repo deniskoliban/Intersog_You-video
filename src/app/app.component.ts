@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { YoutubeService } from './services/youtube.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,12 @@ import { YoutubeService } from './services/youtube.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-
+  
   gapi = (<any>window).gapi;
-  globalResponse: any = {};
+  items = [];
+
+  constructor(private cr: ChangeDetectorRef) {
+  }
 
   ngOnInit(): void {
     this.gapi.load('client');
@@ -31,12 +35,10 @@ export class AppComponent implements OnInit {
       "publishedAfter": "2019-08-04T07:55:29.000Z",
     })
       .then((response) => {
-        this.globalResponse = response.result.items;
-      },
-        (err) => { console.error("Execute error", err); });
+        console.log(response);
+        this.items = response.result.items;
+        console.log(response.result.items);
+        this.cr.detectChanges();
+      }, (err) => { console.error("Execute error", err); });
   }
-
-
- 
-  
 }
