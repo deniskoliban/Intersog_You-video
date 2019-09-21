@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     let mm = String(today.getMonth() + 1);
     let yyyy = today.getFullYear();
 
-    this.currentDate = yyyy + '-' + mm + '-' + dd + 'T00:00:00Z';
+    this.currentDate = yyyy + '-' + mm + '-' + dd + 'T00:00:10Z';
     console.log(this.currentDate);
    
   }
